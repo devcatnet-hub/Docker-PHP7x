@@ -1,0 +1,41 @@
+version: "3.8"
+
+services:
+  php7x:
+    image: deathwalker66/php7x
+    container_name: DEV.PHP7x
+    hostname: dev-php7x
+    volumes:
+      - type: bind
+        source: ./APP
+        target: /APP
+      - type: bind
+        source: ./CFG/php/php.ini
+        target: /etc/php7/php.ini
+      - type: bind
+        source: /mnt/Dock/Com
+        target: /COM
+      - type: bind
+        source: ./SCP
+        target: /SCP
+      - type: bind
+        source: ./LOG
+        target: /usr/local/php/logs
+      - type: bind
+        source: ./PHP
+        target: /PHP
+    ports:
+      - "39022:22"
+      - "39800:8000"
+    networks:
+      - catnet
+    env_file:
+      - .env
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+
+networks:
+  catnet:
+    name: catnet
+    external: true
