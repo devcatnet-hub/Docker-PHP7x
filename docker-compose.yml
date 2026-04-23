@@ -19,11 +19,11 @@ services:
         source: ./SCP
         target: /SCP
       - type: bind
-        source: ./LOG
-        target: /usr/local/php/logs
-      - type: bind
         source: ./PHP
         target: /PHP
+      - type: bind
+        source: ./LOG/php/errors.log
+        target: /var/log/php/errors.log
     ports:
       - target: 22
         published: 39022
