@@ -18,9 +18,8 @@ RUN set -eux ;\
     #addgroup -g 82 -S www-data ;\
     adduser -u 82 -D -S -G www-data www-data ;\        
 ### Add Extra Directory to PHP Testers
-    mkdir -p /PHP /usr/local/php/logs ;\
-    chown -R www-data:www-data /PHP /usr/local/php/logs ;\
-    chmod 755 /PHP ;\
+    mkdir -p /usr/local/php/logs ;\
+    chown -R www-data:www-data /usr/local/php/logs ;\
 ### Set Script Dir
     chmod +x /SCP/* ;\
 ### Clean [!]
